@@ -33,6 +33,15 @@ class ColorReplacementGenerator:
 
         return f"rgba({red}, {green}, {blue}, {alpha})"
 
+    @staticmethod
+    def _adjust_saturation(base_saturation: float, theme_color: InstallationColor) -> float:
+        """Adjust saturation based on the theme color"""
+        if theme_color.saturation is None:
+            return base_saturation
+
+        adjusted = base_saturation * (theme_color.saturation / 100)
+        return min(adjusted, 1.0)
+
     def _get_color_definition(self, element: str, mode: str) -> dict:
         """Get color definition for element, handling defaults if needed"""
         replacer = self.colors.replacers[element]
