@@ -30,9 +30,9 @@
 .switcher-list .item-box:focus,
 .switcher-list .item-box:selected,
 .switcher-list .item-box:outlined {
-	background-color: ACCENT-DISABLED_HOVER;
+	background-color: SECTION-COLOR;
 	/* box-shadow: inset 0 0 0 2px ACCENT-SECONDARY-COLOR; */
-	border: 3px solid ACCENT-SECONDARY-COLOR;
+	/* border: 3px solid ACCENT-SECONDARY-COLOR; */
 }
 
 
