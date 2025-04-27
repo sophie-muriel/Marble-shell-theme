@@ -21,15 +21,15 @@ class ColorReplacementGenerator:
         """Create RGBA value for the specified element"""
         color_def = self._get_color_definition(element, mode)
 
-        lightness = int(color_def["l"]) / 100
-        saturation = int(color_def["s"]) / 100
-        if theme_color.saturation is not None:
-            saturation *= theme_color.saturation / 100
+        h = color_def.get("h", theme_color.hue)
+        s = int(color_def["s"]) / 100
+        l = int(color_def["l"]) / 100
         alpha = color_def["a"]
 
-        red, green, blue = self.color_converter.hsl_to_rgb(
-            theme_color.hue, saturation, lightness
-        )
+        if theme_color.saturation is not None:
+            s *= theme_color.saturation / 100
+
+        red, green, blue = self.color_converter.hsl_to_rgb(h, s, l)
 
         return f"rgba({red}, {green}, {blue}, {alpha})"
 
